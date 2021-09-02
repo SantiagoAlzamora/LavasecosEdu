@@ -11,4 +11,7 @@ package com.lavasecos.edu.servicios;
  */
 public class ClienteServicio {
     
+    public void crearCliente(){
+        
+    }
 }
