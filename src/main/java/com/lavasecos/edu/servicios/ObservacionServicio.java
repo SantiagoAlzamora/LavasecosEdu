@@ -5,10 +5,13 @@
  */
 package com.lavasecos.edu.servicios;
 
+import com.lavasecos.edu.entidades.Observacion;
+
 /**
  *
  * @author santi
  */
 public class ObservacionServicio {
+    
     
 }

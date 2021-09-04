@@ -5,10 +5,14 @@
  */
 package com.lavasecos.edu.repositorios;
 
+import com.lavasecos.edu.entidades.Observacion;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 /**
  *
  * @author santi
  */
-public class ObservacionRepositorio {
+@Repository
+public interface ObservacionRepositorio extends JpaRepository<Observacion, String>{
     
 }

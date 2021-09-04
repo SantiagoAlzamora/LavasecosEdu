@@ -5,10 +5,13 @@
  */
 package com.lavasecos.edu.repositorios;
 
+import com.lavasecos.edu.entidades.Prenda;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
  * @author santi
  */
-public class PrendaRepositorio {
+public interface PrendaRepositorio extends JpaRepository<Prenda, String>{
     
 }
