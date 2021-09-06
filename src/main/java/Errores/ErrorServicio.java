@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.lavasecos.edu.repositorios;
-
-import com.lavasecos.edu.entidades.Pedido;
-import org.springframework.data.jpa.repository.JpaRepository;
+package Errores;
 
 /**
  *
  * @author santi
  */
-public interface PedidoRepositorio extends JpaRepository<Pedido, String>{
+public class ErrorServicio extends Exception{
     
+    public ErrorServicio(String msg){
+        super(msg);
+    }
     
 }

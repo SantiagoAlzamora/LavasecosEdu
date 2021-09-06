@@ -5,10 +5,13 @@
  */
 package com.lavasecos.edu.repositorios;
 
+import com.lavasecos.edu.entidades.Cliente;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
  * @author santi
  */
-public class ClienteRepositorio {
+public interface ClienteRepositorio extends JpaRepository<Cliente,String>{
     
 }
