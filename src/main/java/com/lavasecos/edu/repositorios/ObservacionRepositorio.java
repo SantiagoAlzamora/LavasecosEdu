@@ -6,7 +6,10 @@
 package com.lavasecos.edu.repositorios;
 
 import com.lavasecos.edu.entidades.Observacion;
+import com.lavasecos.edu.entidades.Prenda;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 /**
  *
@@ -14,5 +17,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ObservacionRepositorio extends JpaRepository<Observacion, String>{
+ 
+    @Query("SELECT o FROM Observacion o WHERE o.id = :id")
+    public Observacion buscarPorId(@Param("id") String id);
     
 }
