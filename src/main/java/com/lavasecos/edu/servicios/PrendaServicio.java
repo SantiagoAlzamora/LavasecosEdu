@@ -1,12 +1,13 @@
 
 package com.lavasecos.edu.servicios;
 
-import Errores.ErrorServicio;
+
 import com.lavasecos.edu.entidades.Cliente;
 import com.lavasecos.edu.entidades.Observacion;
 import com.lavasecos.edu.entidades.Prenda;
 import com.lavasecos.edu.enums.Color;
 import com.lavasecos.edu.enums.Material;
+import com.lavasecos.edu.errores.ErrorServicio;
 import com.lavasecos.edu.repositorios.ClienteRepositorio;
 import com.lavasecos.edu.repositorios.PrendaRepositorio;
 import java.util.Date;

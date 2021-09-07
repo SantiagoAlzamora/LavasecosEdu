@@ -5,9 +5,10 @@
  */
 package com.lavasecos.edu.servicios;
 
-import Errores.ErrorServicio;
+
 import com.lavasecos.edu.entidades.Pedido;
 import com.lavasecos.edu.entidades.Prenda;
+import com.lavasecos.edu.errores.ErrorServicio;
 import com.lavasecos.edu.repositorios.PedidoRepositorio;
 import com.lavasecos.edu.repositorios.PrendaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;

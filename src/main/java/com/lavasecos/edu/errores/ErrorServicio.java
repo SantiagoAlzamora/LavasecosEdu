@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Errores;
+package com.lavasecos.edu.errores;
 
 /**
  *
- * @author santi
+ * @author Emiliano
  */
 public class ErrorServicio extends Exception{
     
     public ErrorServicio(String msg){
         super(msg);
     }
-    
 }
