@@ -28,4 +28,38 @@ public class Pedido {
     
     @ManyToOne
     private Prenda prenda;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    public Double getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(Double descuento) {
+        this.descuento = descuento;
+    }
+
+    public Prenda getPrenda() {
+        return prenda;
+    }
+
+    public void setPrenda(Prenda prenda) {
+        this.prenda = prenda;
+    }
+    
+    
 }
