@@ -12,8 +12,8 @@ import com.lavasecos.edu.entidades.Observacion;
  * @author santi
  */
 public class ObservacionServicio {
-    public Observacion crearObservacion() throws ErroServicio{
-    
+    public Observacion crearObservacion(Observacion observacion) throws ErrorServicio{
+        
     }
     
 }
