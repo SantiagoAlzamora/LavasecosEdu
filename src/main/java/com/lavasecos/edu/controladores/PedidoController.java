@@ -23,6 +23,16 @@ public class PedidoController {
         return "";
     }
     
+    @GetMapping("/list")
+    public String listarPedidos(){
+        return "";
+    }
+    
+    @GetMapping("/mostrar")
+    public String mostrarPedido(){
+        return "";
+    }
+    
     @GetMapping("/form")
     public String cargarPedido(){
         return "";
