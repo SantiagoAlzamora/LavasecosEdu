@@ -81,4 +81,10 @@ public class PrendaServicio {
             throw new ErrorServicio("No se encontró la prenda solicitada");
         }
     }
+    public void buscarPorDocumento(Long documento){
+        pr.buscarPorDocumento(documento);
+    }
+    public void buscarPorId(String id){
+        pr.buscarPorId(id);
+    }
 }

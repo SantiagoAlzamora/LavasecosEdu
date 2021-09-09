@@ -6,13 +6,14 @@
 package com.lavasecos.edu.servicios;
 
 import com.lavasecos.edu.entidades.Observacion;
+import com.lavasecos.edu.errores.ErrorServicio;
 
 /**
  *
  * @author santi
  */
 public class ObservacionServicio {
-    public Observacion crearObservacion() throws ErroServicio{
+    public Observacion crearObservacion() throws ErrorServicio{
     
     }
     
