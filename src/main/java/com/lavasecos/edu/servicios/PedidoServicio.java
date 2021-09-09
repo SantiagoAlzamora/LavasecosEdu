@@ -13,6 +13,7 @@ import com.lavasecos.edu.errores.ErrorServicio;
 import com.lavasecos.edu.repositorios.PedidoRepositorio;
 import com.lavasecos.edu.repositorios.PrendaRepositorio;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -75,10 +76,14 @@ public class PedidoServicio {
             return pedido.getPrecio();
         }
     }
-    public void buscarPorDocumento(Long documento){
+    public List<Pedido> buscarPorDocumento(Long documento){
         pr.buscarPorDocumentoCliente(documento);
+        return pr.findAll();
     }
-    public void buscarPorId(String id){
-        pr.buscarPorId(id);
+    public Pedido buscarPorId(String id){
+        return pr.buscarPorId(id);
+    }
+    public List<Pedido> listarPedidos(){
+        return pr.findAll();
     }
 }

@@ -44,6 +44,6 @@ public class ObservacionServicio {
             throw new ErrorServicio("No se encuentra la observacion buscada");
         }
 
->>>>>>> cfa44f15b18e2e2ae186edba3291271c01457df0
+
     }
 }
