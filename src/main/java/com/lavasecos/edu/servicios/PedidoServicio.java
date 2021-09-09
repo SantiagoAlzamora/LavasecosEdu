@@ -77,8 +77,7 @@ public class PedidoServicio {
         }
     }
     public List<Pedido> buscarPorDocumento(Long documento){
-        pr.buscarPorDocumentoCliente(documento);
-        return pr.findAll();
+        return pr.buscarPorDocumentoCliente(documento);
     }
     public Pedido buscarPorId(String id){
         return pr.buscarPorId(id);
