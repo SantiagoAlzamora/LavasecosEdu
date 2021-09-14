@@ -11,6 +11,7 @@ import com.lavasecos.edu.errores.ErrorServicio;
 import com.lavasecos.edu.repositorios.ClienteRepositorio;
 import com.lavasecos.edu.repositorios.PrendaRepositorio;
 import java.util.Date;
+import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,5 +81,15 @@ public class PrendaServicio {
         }else {
             throw new ErrorServicio("No se encontró la prenda solicitada");
         }
+    }
+    public List<Prenda> buscarPorDocumento(Long documento){
+        return pr.buscarPorDocumento(documento);
+        
+    }
+    public Prenda buscarPorId(String id){
+        return pr.buscarPorId(id);   
+    }
+    public List<Prenda> listarPrendas(){
+        return pr.findAll();
     }
 }
