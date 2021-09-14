@@ -6,11 +6,14 @@
 package com.lavasecos.edu.servicios;
 
 
+import com.lavasecos.edu.entidades.Cliente;
 import com.lavasecos.edu.entidades.Pedido;
 import com.lavasecos.edu.entidades.Prenda;
 import com.lavasecos.edu.errores.ErrorServicio;
 import com.lavasecos.edu.repositorios.PedidoRepositorio;
 import com.lavasecos.edu.repositorios.PrendaRepositorio;
+import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,5 +64,25 @@ public class PedidoServicio {
         }else {
             throw new ErrorServicio("No se encontró el pedido solicitado");
         }
+    }
+    public Double precioDelPedido(Pedido pedido){
+        Cliente c = pedido.getPrenda().getCliente();
+        Date fecha = new Date();
+        if(c.getCumpleanios().getMonth()==fecha.getMonth()){
+            pedido.setDescuento(0.9);
+            return pedido.getPrecio()*pedido.getDescuento();
+        }else{
+            pedido.setDescuento(0.0);
+            return pedido.getPrecio();
+        }
+    }
+    public List<Pedido> buscarPorDocumento(Long documento){
+        return pr.buscarPorDocumentoCliente(documento);
+    }
+    public Pedido buscarPorId(String id){
+        return pr.buscarPorId(id);
+    }
+    public List<Pedido> listarPedidos(){
+        return pr.findAll();
     }
 }
