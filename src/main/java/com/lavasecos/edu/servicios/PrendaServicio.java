@@ -83,8 +83,8 @@ public class PrendaServicio {
         }
     }
     public List<Prenda> buscarPorDocumento(Long documento){
-        pr.buscarPorDocumento(documento);
-        return pr.findAll();
+        return pr.buscarPorDocumento(documento);
+        
     }
     public Prenda buscarPorId(String id){
         return pr.buscarPorId(id);   
