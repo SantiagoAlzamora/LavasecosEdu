@@ -1,0 +1,41 @@
+body {
+    background-color: #90C8C5;
+}
+
+img {
+    width: 12rem;
+    height: 12rem;
+    padding-top: 3rem;
+    display: block;
+    margin: auto;
+  }
+
+#botonera-central {
+}
+
+#center-button {
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    background-color: rgb(230,230,230,0.4);
+    border: none;
+    width: 24%;
+    height: 12rem;
+    margin-top: 4rem;
+    margin-left: 2.8rem !important;
+    margin-right: 2.8rem !important;
+    border-radius: 3rem;
+}
+
+#botonera-bottom {
+}
+
+#bottom-button {
+    color: black;
+    font-weight: 450;
+    font-size: 1.8rem;
+    margin-top: 4.5rem;
+    background-color: rgb(151,148,148,0.4);
+    border: none;
+    border-radius: 1rem;
+}
