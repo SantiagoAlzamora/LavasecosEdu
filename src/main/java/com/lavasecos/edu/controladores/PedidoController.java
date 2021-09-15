@@ -30,7 +30,12 @@ public class PedidoController {
 
     @GetMapping("")
     public String index() {
-        return "";
+        return "Menu";
+    }
+    
+    @GetMapping("/create")
+    public String paginaNuevoPedido(){
+        return "nuevopedido";
     }
 
     @GetMapping("/list")
