@@ -1,0 +1,73 @@
+body {
+    background-color: #90C8C5;
+    font-family: 'Rubik', sans-serif;
+}
+
+nav {
+    background-color: #90C8C5;
+}
+
+#desplegable {
+    margin-bottom: 12rem;
+}
+
+nav div a {
+    color: white;
+}
+
+#boton-desplegable {
+    width: 50rem;
+    margin-top: 2rem;
+    background-color: rgb(230,230,230,0.4);
+    border: none;
+    border-radius: 0.7rem;
+    height: 4rem;
+}
+
+#menu-dropdown {
+    width: 50rem;
+    border: none;
+    background-color: transparent;
+}
+
+#menu-dropdown li a button {
+    width: 50rem;
+    margin-bottom: 0.3rem;
+    background-color: rgb(230,230,230,0.4);
+    border: none;
+    border-radius: 1rem;
+}
+
+#iconomenu {
+    
+}
+
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+    font-size: 4rem;
+    color: white;
+}
+
+.navbar-brand:hover {
+    color: white;
+}
+
+#logo {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+#bottom-button {
+    color: black;
+    font-weight: 450;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    background-color: rgb(151,148,148,0.4);
+    border: none;
+    border-radius: 1rem;
+}
