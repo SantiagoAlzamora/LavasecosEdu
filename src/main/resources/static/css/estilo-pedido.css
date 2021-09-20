@@ -1,0 +1,61 @@
+body{
+  font-family: 'Urbanist', sans-serif;
+  background-color: #7FC3C0;
+  color: #333;
+  font-size: 1.3rem;
+  margin:0;
+  line-height: 1.3em;
+}
+
+#navegador{
+  background: #cad0cf83;
+}
+
+body nav div {
+  display: flex;
+  justify-content: space-between;
+ 
+}
+
+#img {
+  margin-top: 19%;
+}
+
+#img2{
+  margin-top: 10.8%;
+}
+
+#icono{
+  
+  margin-top: 9%;
+}
+
+
+
+
+
+.boton{
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0.5em 1.2em;
+  background: #10885069;
+  border: none;
+  
+  position: relative;
+}
+.boton:hover {
+ 
+  box-shadow: 0 20px 16px rgba(126, 108, 34, 0.385);
+  transition: all 0.3s ease;
+}
+
+.boton:hover::before, .boton:focus::before {
+  width: 100%;
+  }
+
+#icono-i{
+  color: rgb(44, 34, 25);
+
+}
+
