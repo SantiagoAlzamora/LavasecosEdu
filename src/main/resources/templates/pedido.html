@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/src/main/resources/static/css/estilo-pedido.css">
+    <link rel="stylesheet" href="/css/estilo-pedido.css">
     <link rel="stylesheet" href="icono.min.css">
     <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
 
@@ -16,96 +16,143 @@
 <body>
     <nav class="navbar navbar-light" id="navegador">
         <div class="container">
-          <a class="navbar-brand" href="#">
-            <img src="/src/main/resources/static/img/Lavasecos.png" alt=""  width="8%" height="10%">
-          </a>
-          
-          <div class="position-absolute top-2 start-50 translate-middle-x">
-            <h1> PEDIDO </h1>  
-          </div>
-
-          <div class="position-relative"></div>
-          <div class="position-absolute top-1 end-0">
             <a class="navbar-brand" href="#">
-              <img src="/src/main/resources/static/img/CASITA_preview_rev_1.png" alt=""  width="30%" >
+                <img src="/img/Lavasecos.png" alt=""  width="8%" height="10%">
             </a>
-          </div>
-          </div>
-          
+
+            <div class="position-absolute top-2 start-50 translate-middle-x">
+                <h1> PEDIDO </h1>  
+            </div>
+
+            <div class="position-relative"></div>
+            <div class="position-absolute top-1 end-0">
+                <a class="navbar-brand" href="#">
+                    <img src="/img/CASITA_preview_rev_1.png" alt=""  width="30%" >
+                </a>
+            </div>
         </div>
-      </nav>
-      <br>
-      <br>
 
-   
+    </div>
+</nav>
+<br>
+<br>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-3">
+
+
+<div class="container">
+  <form th:action="@{/pedido/save}" th:object="${pedido}"  method="POST" >
+    <div class="row">
+        <div class="col">
 
             <div  class="input-group">
-                <label for="exampleDataList" class="form-label"> </label>
-                <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Tipo de Prenda">
-                <datalist id="datalistOptions">
-                <option value="Pollera">
-                <option value="Pantalon">
-                <option value="Camisa">
-                <option value="Vestido">
-                <option value="Buzo">
-                </datalist>
-            </div>
-            
-          </div>
 
-          
-          <div class="col-6"> 
-              <div class="input-group">
-                <label for="exampleDataList" class="form-label"> </label>
-                <input class="form-control" list="datalistOptions-1" id="exampleDataList" placeholder="Detalle:">
-                <datalist id="datalistOptions-1">
-                <option value="Mancha">
-                <option value="Color">
-              </div>
-           
-
-          </div>
-          <div class="col-3">
-            
-            <div class="input-group">
-                <span class="input-group-text">$</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                <span class="input-group-text">.00</span>
-              </div>
-
-          </div>
-        </div>
-        
-      <div class="position-relative">
-        <div id="icono" class="position-absolute top-2 start-50 translate-middle">
-       
-          <button  class="boton" type="submit">
-            <i id="icono-i"  class="icono-plus">  </i>
-    
-          </button>
-        
               
+                    <input hidden th:value="${action}" name="action">
+
+                    <label for="exampleDataList" class="form-label"> </label>
+                    <input  type="text" th:field="*{prenda.tipo}"  class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Tipo de Prenda">
+                    <datalist id="datalistOptions">
+                        <option value="Pollera">
+                        <option value="Pantalon">
+                        <option value="Camisa">
+                        <option value="Vestido">
+                        <option value="Buzo">
+                    </datalist>
+                    <div class="col-6"> 
+                        <div class="input-group">
+                            <label for="exampleDataList" class="form-label"> </label>
+                            <input type="text" th:field="*{prenda.observacion.mensaje}"  class="form-control" list="datalistOptions-1" id="exampleDataList" placeholder="Detalle:">
+                            <datalist id="datalistOptions-1">
+                                <option value="Mancha">
+                                <option value="Color">
+                                    </div>
+
+
+                                    </div>
+                                <div class="col-3">
+
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" th:field="*{precio}" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+
+                                </div>
+                        </div>
+
+                        <div class="position-relative">
+                            <div id="icono" class="position-absolute top-2 start-50 translate-middle">
+
+                               
+                                    <button class="boton" type="submit">
+                                      <i id="icono-i"  class="icono-plus">   </i>
+                                    </button>
+                                    
+
+                            
+                                    
+
+
+                            </div>
+                        </div>
+               
+
+
+            </div>
+
         </div>
-      </div>
-      </div>
+
+      </form>
+
+    </div>
 
 
+
+
+    <ul>
+      <li th:each="p:${pedidos}" th:text="" >
+   <div  class="input-group">
+          
+                    <label for="exampleDataList" class="form-label"> </label>
+                    <input readonly type="text" th:field="${p.prenda.tipo}"  class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Tipo de Prenda">
+                    <div class="col-6"> 
+                        <div class="input-group">
+                            <label for="exampleDataList" class="form-label"> </label>
+                            <input  readonly type="text" th:field="${p.prenda.observacion.mensaje}"  class="form-control" list="datalistOptions-1" id="exampleDataList" placeholder="Detalle:">
+                                    </div>
+                                    </div>
+                                <div class="col-3">
+
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input readonly type="number" th:field="${p.precio}" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                        <span class="input-group-text">.00</span>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="position-relative">
+                            <div id="icono" class="position-absolute top-2 start-50 translate-middle">
+                                    <button class="boton" type="submit">
+                                      <i id="icono-i"  class="icono-plus">   </i>
+                                    </button>
+                            </div>
+                        </div>
+            </div>
+      </li>
+    </ul>
 
     <div class="position-relative">
     
       <div  class="position-absolute bottom-0  top-0  end-0">
-        <img  id="img" class="rounded float-end" width="40%" src="/src/main/resources/static/img/burbuja.png" alt="">
+        <img  id="img" class="rounded float-end" width="40%" src="/img/burbuja.png" alt="">
       </div>
    
       <div id="img2" class="position-absolute bottom-0  top-0 star-0">
-        <img  class="rounded float-star"  src="/src/main/resources/static/img/burbuja.png"  width="40%" class="rota-horizontal" alt="">
+        <img  class="rounded float-star"  src="/img/burbuja.png"  width="40%" alt="">
       </div>
    
   </div>
+
 
 
 
