@@ -38,24 +38,7 @@ nav div a {
     border-radius: 1rem;
 }
 
-#iconomenu {
-    
-}
 
-.navbar-brand
-{
-    position: absolute;
-    width: 100%;
-    left: 0;
-    text-align: center;
-    margin: auto;
-    font-size: 4rem;
-    color: white;
-}
-
-.navbar-brand:hover {
-    color: white;
-}
 
 #logo {
     padding-top: 1rem;
@@ -71,3 +54,18 @@ nav div a {
     border: none;
     border-radius: 1rem;
 }
+
+body nav div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+body nav div h1 {
+    color: white;
+    text-decoration: none;
+    font-size: 3.5rem;
+
+} 

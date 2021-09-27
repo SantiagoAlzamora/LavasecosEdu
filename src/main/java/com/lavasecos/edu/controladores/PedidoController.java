@@ -83,7 +83,7 @@ public class PedidoController {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
         model.addAttribute("action", action);
-        return "";
+        return "pedido";
     }
 
     @PostMapping("/save")

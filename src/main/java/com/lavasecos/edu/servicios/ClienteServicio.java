@@ -10,6 +10,7 @@ import com.lavasecos.edu.entidades.Cliente;
 import com.lavasecos.edu.errores.ErrorServicio;
 import com.lavasecos.edu.repositorios.ClienteRepositorio;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,8 +50,16 @@ public class ClienteServicio {
         }
     
     }
-    public void buscarPorDni(Long documento) throws ErrorServicio{
-        cr.buscarPorDocumento(documento);
+    public Cliente buscarPorDni(Long documento) throws ErrorServicio{
+        return cr.buscarPorDocumento(documento);
+    }
+    
+    public List<Cliente> listarClientes(){
+        return cr.findAll();
+    }
+    
+    public Cliente buscarPorId(String id){
+        return cr.getById(id);
     }
     
     public void eliminar (Long documento) throws ErrorServicio{

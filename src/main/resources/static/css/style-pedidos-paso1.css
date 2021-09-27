@@ -1,0 +1,73 @@
+body {
+    background-color: #90C8C5;
+    font-family: 'Rubik', sans-serif;
+}
+
+body nav div img{
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.btn-buscar {
+    width: 10rem;
+    background-color: rgba(230, 230, 230, 0.85);
+    border: none;
+    color: white;
+    font-size: 1.7rem;
+    border-radius: 1rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.btn-buscar:hover {
+    background: #2DC3BB;
+}
+
+.input-buscar {
+    width: 55rem;
+    border: none;
+    border-radius: 1rem;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.barra-busqueda {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.tabla-de-botones {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    flex-wrap: wrap;
+}
+
+#cliente-button {
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    background-color: rgb(230,230,230,0.4);
+    border: none;
+    width: 18%;
+    margin-top: 2rem;
+    height: 6rem;
+    border-radius: 1rem;
+    color: white;
+    outline: none;
+}
+
+#cliente-button:hover {
+    background: #2DC3BB;
+}
+
+#cliente-button:active {
+    border: none;
+}
+
+#cliente-button:checked {
+    border: none;
+}
