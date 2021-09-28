@@ -28,7 +28,7 @@ public class Cliente {
     private String nombre;
     private String apellido;
     
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date cumpleanios;
     
     private String domicilio;

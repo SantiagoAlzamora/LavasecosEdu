@@ -46,7 +46,8 @@
 
                 <h2 id="tittle2">Crear cliente</h2>
 
-                <form th:action="@{/cliente/save}" method="POST" th:object="${cliente}" >
+                <form th:action="@{/cliente/registrar}" method="POST" th:object="${cliente}" >
+                    <input hidden th:value="${action}" name="action">
                     <input hidden th:field="*{id}">
                     <div class="container-label-input">
                         <label for="nombre" class="container-label"></label>
@@ -58,11 +59,11 @@
                     </div>
                     <div class="container-label-input">
                         <label for="dni" class="container-label"></label>
-                        <input type="number" class="container-input" th:field="*{dni}" placeholder=" Dni:">
+                        <input type="number" class="container-input" th:field="*{documento}" placeholder=" Dni:">
                     </div>
                     <div class="container-label-input">
                         <label for="fechaDeNacimiento" class="container-label"></label>
-                        <input type="text" class="container-input" th:field="*{cumpleanios}" placeholder=" Fecha de Nacimiento:">
+                        <input type="date" class="container-input" th:field="*{cumpleanios}" placeholder=" Fecha de Nacimiento:">
                     </div>
                     <div class="container-label-input">
                         <label for="domicilio" class="container-label"></label>

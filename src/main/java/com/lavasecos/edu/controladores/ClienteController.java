@@ -31,7 +31,7 @@ public class ClienteController {
 
     @GetMapping("")
     public String index() {
-        return "";
+        return "Facturar";
     }
 
     @PostMapping("/registrar")
@@ -45,10 +45,10 @@ public class ClienteController {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            model.addAttribute("erro", e.getMessage());
+            model.addAttribute("error", e.getMessage());
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
-        return "reirect/cliente/list";
+        return "redirect:/pedido/form";
     }
 
     @GetMapping("/list")
@@ -61,7 +61,7 @@ public class ClienteController {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
 
-        return "";
+        return "pedidos-paso1";
     }
 
     @GetMapping("/form")
@@ -84,7 +84,7 @@ public class ClienteController {
         }
         model.addAttribute("action", action);
 
-        return "cliente-form";
+        return "crear-cliente";
     }
 
 }
