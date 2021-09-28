@@ -68,12 +68,9 @@ body{
     border-radius: 100px;
     margin: 10%;
     justify-content: center;
+    text-align: center;
     margin-top: 20%;
     padding: 1%;
-}
-
-#img-cliente{
-    margin-left: 30%;
 }
 
 .container-form{
