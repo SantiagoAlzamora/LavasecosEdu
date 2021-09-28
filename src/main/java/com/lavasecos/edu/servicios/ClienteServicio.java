@@ -87,4 +87,8 @@ public class ClienteServicio {
             throw new ErrorServicio("El cliente solicitado no existe en nuestra base");
         }
     }
+
+    public void modificar(String id, Long documento, String nombre, String apellido, Date cumpleanios, String domicilio, String telefono, String email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

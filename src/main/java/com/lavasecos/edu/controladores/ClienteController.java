@@ -6,6 +6,7 @@
 package com.lavasecos.edu.controladores;
 
 import com.lavasecos.edu.entidades.Cliente;
+
 import com.lavasecos.edu.servicios.ClienteServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,24 +25,66 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/cliente")
 public class ClienteController {
-    
+
     @Autowired
     private ClienteServicio cs;
-    
-    
+
+    @GetMapping("")
+    public String index() {
+        return "";
+    }
+
     @PostMapping("/registrar")
-    public String registrar(Model model,RedirectAttributes redirectAttributes,@ModelAttribute Cliente cliente,@RequestParam String action){
+    public String registrarCliente(Model model, RedirectAttributes redirectAttributes, @ModelAttribute Cliente cliente, @RequestParam String action) {
         try {
-            model.addAttribute("cliente", cs.cliente(cliente));
+            if (action.equals("crear")) {
+                cs.cliente(cliente);
+
+            } else {
+                cs.modificar(cliente.getId(), cliente.getDocumento(), cliente.getNombre(), cliente.getApellido(), cliente.getCumpleanios(), cliente.getDomicilio(), cliente.getTelefono(), cliente.getEmail());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("erro", e.getMessage());
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+        }
+        return "reirect/cliente/list";
+    }
+
+    @GetMapping("/list")
+    public String listarClientes(Model model, RedirectAttributes redirectAttributes) {
+        try {
+            model.addAttribute("clientes", cs.listarClientes());
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e.getMessage());
             redirectAttributes.addFlashAttribute("error", e.getMessage());
-            
         }
+
         return "";
     }
-    
-    
-    
+
+    @GetMapping("/form")
+    public String crearCliente(Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) String id, @RequestParam(required = true) String action) {
+        try {
+            if (id != null) {
+                Cliente cl = cs.buscarPorId(id);
+                if (cl != null) {
+                    model.addAttribute("cliente", cl);
+                } else {
+                    return "redirect:/cliente";
+                }
+            } else {
+                model.addAttribute("cliente", new Cliente());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("error", e.getMessage());
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+        }
+        model.addAttribute("action", action);
+
+        return "cliente-form";
+    }
+
 }
