@@ -65,7 +65,7 @@ public class PedidoController {
     }
 
     @GetMapping("/form")
-    public String cargarPedido(Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) String id, @RequestParam(required = true) String action) {
+    public String cargarPedido(Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) String id, @RequestParam(required = true) String accion) {
         try {
             if (id != null) {
                 Pedido p = ps.buscarPorId(id);
@@ -82,14 +82,14 @@ public class PedidoController {
             model.addAttribute("error", e.getMessage());
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
-        model.addAttribute("action", action);
+        model.addAttribute("accion", accion);
         return "pedido";
     }
 
     @PostMapping("/save")
-    public String guardarPedido(Model model, RedirectAttributes redirectAttributes, @ModelAttribute Pedido pedido, @RequestParam String action) {
+    public String guardarPedido(Model model, RedirectAttributes redirectAttributes, @ModelAttribute Pedido pedido, @RequestParam String accion) {
         try {
-            if (action.equals("crear")) {
+            if (accion.equals("crear")) {
                 ps.crearPedido(pedido);
             }else{
                 ps.modificar(pedido.getId(),pedido.getPrecio(), pedido.getDescuento(), pedido.getPrenda());

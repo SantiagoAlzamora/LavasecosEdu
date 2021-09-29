@@ -35,9 +35,9 @@ public class ClienteController {
     }
 
     @PostMapping("/registrar")
-    public String registrarCliente(Model model, RedirectAttributes redirectAttributes, @ModelAttribute Cliente cliente, @RequestParam String action) {
+    public String registrarCliente(Model model, RedirectAttributes redirectAttributes, @ModelAttribute Cliente cliente, @RequestParam("accion") String accion) {
         try {
-            if (action.equals("crear")) {
+            if (accion.equals("crear")) {
                 cs.cliente(cliente);
 
             } else {
@@ -46,8 +46,12 @@ public class ClienteController {
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e.getMessage());
+            model.addAttribute("cliente", cliente);
+            model.addAttribute("accion",accion != null ? accion : "crear");
             redirectAttributes.addFlashAttribute("error", e.getMessage());
+            return "crear-cliente";
         }
+        
         return "redirect:/pedido/form";
     }
 
@@ -65,24 +69,26 @@ public class ClienteController {
     }
 
     @GetMapping("/form")
-    public String crearCliente(Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) String id, @RequestParam(required = true) String action) {
+    public String crearCliente(Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) String id, @RequestParam(required = true) String accion) {
         try {
             if (id != null) {
                 Cliente cl = cs.buscarPorId(id);
                 if (cl != null) {
                     model.addAttribute("cliente", cl);
+                    model.addAttribute("accion",accion);
                 } else {
                     return "redirect:/cliente";
                 }
             } else {
                 model.addAttribute("cliente", new Cliente());
+                model.addAttribute("accion", "crear");
             }
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e.getMessage());
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
-        model.addAttribute("action", action);
+        model.addAttribute("accion", accion);
 
         return "crear-cliente";
     }

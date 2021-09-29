@@ -60,7 +60,7 @@ public class PrendaController {
     }
     
     @GetMapping("/form")
-    public String cargarPrenda(Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) String id, @RequestParam(required = true) String action){
+    public String cargarPrenda(Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) String id, @RequestParam(required = true) String accion){
         try {
             if (id != null) {
                 Prenda p = ps.buscarPorId(id);
@@ -77,14 +77,14 @@ public class PrendaController {
             model.addAttribute("error", e.getMessage());
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
-        model.addAttribute("action", action);
+        model.addAttribute("accion", accion);
         return "";
     }
     
     @PostMapping("/save")
-    public String guardarPrenda(Model model,RedirectAttributes ra,@ModelAttribute Prenda prenda,@RequestParam String action){
+    public String guardarPrenda(Model model,RedirectAttributes ra,@ModelAttribute Prenda prenda,@RequestParam String accion){
         try {
-            if (action.equals("crear")) {
+            if (accion.equals("crear")) {
                 ps.crearPrenda(prenda);
             }else{
                 ps.modificar(prenda.getId(),prenda.getEntrada(),prenda.getSalida(),prenda.getTipo(),

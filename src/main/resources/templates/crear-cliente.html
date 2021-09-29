@@ -46,8 +46,8 @@
 
                 <h2 id="tittle2">Crear cliente</h2>
 
-                <form th:action="@{/cliente/registrar}" method="POST" th:object="${cliente}" >
-                    <input hidden th:value="${action}" name="action">
+                <form th:action="@{/cliente/registrar(accion = ${accion})}" method="POST" th:object="${cliente}" >
+                    <input hidden th:value="${accion}" name="accion">
                     <input hidden th:field="*{id}">
                     <div class="container-label-input">
                         <label for="nombre" class="container-label"></label>
