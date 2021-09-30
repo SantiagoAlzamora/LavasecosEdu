@@ -82,14 +82,15 @@ public class PrendaController {
     }
     
     @PostMapping("/save")
-    public String guardarPrenda(Model model,RedirectAttributes ra,@ModelAttribute Prenda prenda,@RequestParam String accion){
+    public String guardarPrenda(Model model,RedirectAttributes ra,@ModelAttribute Prenda prenda,@RequestParam String accion, @RequestParam(required = true)String idCliente){
         try {
             if (accion.equals("crear")) {
-                ps.crearPrenda(prenda);
+                ps.crearPrenda(prenda,idCliente);
             }else{
-                ps.modificar(prenda.getId(),prenda.getEntrada(),prenda.getSalida(),prenda.getTipo(),
-                        prenda.getMancha(),prenda.getColor(),prenda.getMaterial(),prenda.getCliente(),
-                        prenda.getObservacion());
+//                ps.modificar(prenda.getId(),prenda.getEntrada(),prenda.getSalida(),prenda.getTipo(),
+//                        prenda.getMancha(),prenda.getColor(),prenda.getMaterial(),prenda.getCliente(),
+//                        prenda.getObservacion());
+                  ps.modificar2(prenda);
             }
         } catch (Exception e) {
             e.printStackTrace();

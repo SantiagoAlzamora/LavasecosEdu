@@ -9,12 +9,14 @@ import com.lavasecos.edu.entidades.Observacion;
 import com.lavasecos.edu.errores.ErrorServicio;
 import com.lavasecos.edu.repositorios.ObservacionRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 /**
  *
  * @author santi
  */
+@Service
 public class ObservacionServicio {
 
     @Autowired
@@ -45,5 +47,9 @@ public class ObservacionServicio {
         }
 
 
+    }
+    
+    public Observacion buscarPorID(String id){
+        return or.buscarPorId(id);
     }
 }

@@ -36,12 +36,13 @@ public class ClienteController {
 
     @PostMapping("/registrar")
     public String registrarCliente(Model model, RedirectAttributes redirectAttributes, @ModelAttribute Cliente cliente, @RequestParam("accion") String accion) {
+        Cliente c = null;
         try {
             if (accion.equals("crear")) {
-                cs.cliente(cliente);
+                c= cs.cliente(cliente);
 
             } else {
-                cs.modificar(cliente.getId(), cliente.getDocumento(), cliente.getNombre(), cliente.getApellido(), cliente.getCumpleanios(), cliente.getDomicilio(), cliente.getTelefono(), cliente.getEmail());
+                c = cs.modificar(cliente);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,7 +53,7 @@ public class ClienteController {
             return "crear-cliente";
         }
         
-        return "redirect:/pedido/form";
+        return "redirect:/pedido/form?accion="+accion+"&idCliente="+c.getId();
     }
 
     @GetMapping("/list")

@@ -71,24 +71,21 @@ public class ClienteServicio {
             throw new ErrorServicio("No se encontro el cliente");
         }
     }
-    public void modificar(Long documento, String nombre, String apellido, Date cumpleanios, String domicilio, String telefono, String email) throws ErrorServicio{
-        validar(documento,nombre,apellido,cumpleanios,domicilio,telefono,email);
-        Cliente c = cr.buscarPorDocumento(documento);
+    public Cliente modificar(Cliente cliente) throws ErrorServicio{
+        Cliente c = cr.buscarPorDocumento(cliente.getDocumento());
         if ( c!= null){
-        c.setDocumento(documento);
-        c.setNombre(nombre);
-        c.setApellido(apellido);
-        c.setCumpleanios(cumpleanios);
-        c.setDomicilio(domicilio);
-        c.setTelefono(telefono);
-        c.setEmail(email);
+        c.setDocumento(cliente.getDocumento());
+        c.setNombre(cliente.getNombre());
+        c.setApellido(cliente.getApellido());
+        c.setCumpleanios(cliente.getCumpleanios());
+        c.setDomicilio(cliente.getDomicilio());
+        c.setTelefono(cliente.getTelefono());
+        c.setEmail(cliente.getEmail());
         cr.save(c);
         } else {
             throw new ErrorServicio("El cliente solicitado no existe en nuestra base");
         }
+        return c;
     }
 
-    public void modificar(String id, Long documento, String nombre, String apellido, Date cumpleanios, String domicilio, String telefono, String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

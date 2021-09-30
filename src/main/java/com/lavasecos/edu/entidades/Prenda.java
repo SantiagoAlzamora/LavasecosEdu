@@ -35,16 +35,17 @@ public class Prenda {
     private Date salida;
     
     private String tipo;
-    private Boolean mancha;
-    @Enumerated(EnumType.STRING)
-    private Color color;
-    @Enumerated(EnumType.STRING)
-    private Material material;
+    private String detalle;
+//    private Boolean mancha;
+//    @Enumerated(EnumType.STRING)
+//    private Color color;
+//    @Enumerated(EnumType.STRING)
+//    private Material material;
     
     @ManyToOne
     private Cliente cliente;
-    @ManyToOne
-    private Observacion observacion;
+//    @ManyToOne
+//    private Observacion observacion;
 
     public String getId() {
         return id;
@@ -78,29 +79,38 @@ public class Prenda {
         this.tipo = tipo;
     }
 
-    public Boolean getMancha() {
-        return mancha;
+    public String getDetalle() {
+        return detalle;
     }
 
-    public void setMancha(Boolean mancha) {
-        this.mancha = mancha;
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
     }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public Material getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Material material) {
-        this.material = material;
-    }
+    
+//
+//    public Boolean getMancha() {
+//        return mancha;
+//    }
+//
+//    public void setMancha(Boolean mancha) {
+//        this.mancha = mancha;
+//    }
+//
+//    public Color getColor() {
+//        return color;
+//    }
+//
+//    public void setColor(Color color) {
+//        this.color = color;
+//    }
+//
+//    public Material getMaterial() {
+//        return material;
+//    }
+//
+//    public void setMaterial(Material material) {
+//        this.material = material;
+//    }
 
     public Cliente getCliente() {
         return cliente;
@@ -110,13 +120,13 @@ public class Prenda {
         this.cliente = cliente;
     }
 
-    public Observacion getObservacion() {
-        return observacion;
-    }
-
-    public void setObservacion(Observacion observacion) {
-        this.observacion = observacion;
-    }
-    
+//    public Observacion getObservacion() {
+//        return observacion;
+//    }
+//
+//    public void setObservacion(Observacion observacion) {
+//        this.observacion = observacion;
+//    }
+//    
     
 }

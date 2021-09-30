@@ -46,7 +46,7 @@
 
             <div  class="input-group">
 
-              
+                    <input hidden th:value="${idCliente}" name ="idCliente">
                     <input hidden th:value="${accion}" name="accion">
 
                     <label for="exampleDataList" class="form-label"> </label>
@@ -61,7 +61,7 @@
                     <div class="col-6"> 
                         <div class="input-group">
                             <label for="exampleDataList" class="form-label"> </label>
-                            <input type="text" th:field="*{prenda.observacion.mensaje}"  class="form-control" list="datalistOptions-1" id="exampleDataList" placeholder="Detalle:">
+                            <input type="text" th:field="*{prenda.detalle}"  class="form-control" list="datalistOptions-1" id="exampleDataList" placeholder="Detalle:">
                             <datalist id="datalistOptions-1">
                                 <option value="Mancha">
                                 <option value="Color">

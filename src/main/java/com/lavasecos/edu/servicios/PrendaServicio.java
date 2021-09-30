@@ -24,11 +24,18 @@ public class PrendaServicio {
     @Autowired
     private PrendaRepositorio pr;
     @Autowired
-    private ClienteRepositorio cr;
+    private ClienteServicio cs;
+    
+    @Autowired
+    private ObservacionServicio os;
+    
     
     @Transactional
-    public Prenda crearPrenda(Prenda prenda) throws ErrorServicio{
-        validar(prenda.getEntrada(),prenda.getSalida(),prenda.getTipo(),prenda.getMancha(),prenda.getColor(),prenda.getMaterial(),prenda.getCliente(),prenda.getObservacion());
+    public Prenda crearPrenda(Prenda prenda, String idCliente) throws ErrorServicio{
+        //validar(prenda.getEntrada(),prenda.getSalida(),prenda.getTipo(),prenda.getMancha(),prenda.getColor(),prenda.getMaterial(),prenda.getCliente(),prenda.getObservacion());
+        Cliente c = cs.buscarPorId(idCliente);
+        validar2(prenda.getTipo(),c,prenda.getDetalle());
+        prenda.setCliente(c);
         return pr.save(prenda);
     }
     private void validar(Date entrada,Date salida,String tipo,Boolean mancha,Color color,Material material,Cliente cliente,Observacion observacion) throws ErrorServicio{
@@ -51,8 +58,20 @@ public class PrendaServicio {
         if(material == null){
             throw new ErrorServicio("El material no puede ser nulo");
         }
-        if(cr.buscarPorDocumento(cliente.getDocumento()) == null){
+        if(cliente == null){
             throw new ErrorServicio("El cliente no existe");
+        }
+        
+    }
+    public void validar2(String tipo, Cliente cliente, String detalle) throws ErrorServicio{
+        if (tipo==null || tipo.isEmpty()) {
+            throw new ErrorServicio("El tipo no puede ser nulo");
+        }
+        if(cliente == null){
+            throw new ErrorServicio("El cliente no existe");
+        }
+        if(detalle.isEmpty() || detalle==null){
+            throw new ErrorServicio("Debes escribir una observacion de la prenda");
         }
         
     }
@@ -71,16 +90,22 @@ public class PrendaServicio {
             p.setEntrada(entrada);
             p.setSalida(salida);
             p.setTipo(tipo);
-            p.setMancha(mancha);
-            p.setColor(color);
-            p.setMaterial(material);
+//            p.setDetalle();
+//            p.setMancha(mancha);
+//            p.setColor(color);
+//            p.setMaterial(material);
             p.setCliente(cliente);
-            p.setObservacion(observacion);
+//            p.setObservacion(observacion);
             
             pr.save(p);
         }else {
             throw new ErrorServicio("No se encontró la prenda solicitada");
         }
+    }
+    
+    public void modificar2(Prenda p) throws ErrorServicio{
+        validar2(p.getTipo(),p.getCliente(),p.getDetalle());
+        pr.save(p);
     }
     public List<Prenda> buscarPorDocumento(Long documento){
         return pr.buscarPorDocumento(documento);

@@ -7,6 +7,7 @@ package com.lavasecos.edu.controladores;
 
 import com.lavasecos.edu.entidades.Pedido;
 import com.lavasecos.edu.servicios.PedidoServicio;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,10 +66,11 @@ public class PedidoController {
     }
 
     @GetMapping("/form")
-    public String cargarPedido(Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) String id, @RequestParam(required = true) String accion) {
+    public String cargarPedido( Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) String idPedido, @RequestParam(required = true) String accion, @RequestParam(required=true) String idCliente) {
         try {
-            if (id != null) {
-                Pedido p = ps.buscarPorId(id);
+            
+            if (idPedido != null) {
+                Pedido p = ps.buscarPorId(idPedido);
                 if (p!=null) {
                     model.addAttribute("pedido", p);
                 }else{
@@ -82,15 +84,16 @@ public class PedidoController {
             model.addAttribute("error", e.getMessage());
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
+        model.addAttribute("idCliente", idCliente);
         model.addAttribute("accion", accion);
         return "pedido";
     }
 
     @PostMapping("/save")
-    public String guardarPedido(Model model, RedirectAttributes redirectAttributes, @ModelAttribute Pedido pedido, @RequestParam String accion) {
+    public String guardarPedido(Model model, RedirectAttributes redirectAttributes, @ModelAttribute Pedido pedido, @RequestParam String accion, @RequestParam(required=true) String idCliente) {
         try {
             if (accion.equals("crear")) {
-                ps.crearPedido(pedido);
+                ps.crearPedido(pedido,idCliente);
             }else{
                 ps.modificar(pedido.getId(),pedido.getPrecio(), pedido.getDescuento(), pedido.getPrenda());
             }
@@ -100,7 +103,7 @@ public class PedidoController {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
             
         }
-        return "redirect:/pedido/list";
+        return "redirect:/pedido/form?accion=crear&idCliente="+idCliente;
     }
 
     @GetMapping("/delete")

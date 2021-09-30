@@ -27,10 +27,11 @@ public class PedidoServicio {
     @Autowired
     private PedidoRepositorio pr;
     @Autowired
-    private PrendaRepositorio prendaRepositorio;
+    private PrendaServicio prendaServicio;
     
-    public Pedido crearPedido(Pedido pedido) throws ErrorServicio{
+    public Pedido crearPedido(Pedido pedido,String idCliente) throws ErrorServicio{
         validar(pedido.getPrecio(),pedido.getDescuento(),pedido.getPrenda());
+        prendaServicio.crearPrenda(pedido.getPrenda(), idCliente);
         return pr.save(pedido);
     }
     
@@ -38,12 +39,12 @@ public class PedidoServicio {
         if (precio == null){
             throw new ErrorServicio("El precio no puede ser nulo");
         }
-        if(descuento == null){
-            throw new ErrorServicio("El descuento no puede ser nulo");
-        }
-        if (prendaRepositorio.buscarPorDocumento(prenda.getCliente().getDocumento()) == null){
-            throw new ErrorServicio("La prenda no existe");
-        }   
+//        if(descuento == null){
+//            throw new ErrorServicio("El descuento no puede ser nulo");
+//        }
+//        if (prendaServicio.buscarPorDocumento(prenda.getCliente().getDocumento()) == null){
+//            throw new ErrorServicio("La prenda no existe");
+//        }   
     }
     public void eliminar(String id) throws ErrorServicio{
         Pedido respuesta = pr.buscarPorId(id);
