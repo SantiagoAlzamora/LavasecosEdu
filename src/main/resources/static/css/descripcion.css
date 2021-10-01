@@ -1,0 +1,21 @@
+body{
+  font-family: 'Urbanist', sans-serif;
+  background-color: #7FC3C0;
+  color: #333;
+  font-size: 1.3rem;
+  margin:0;
+  line-height: 1.3em;
+}
+
+#img {
+  margin-top: 19%;
+}
+
+#img2{
+  margin-top: 10.8%;
+}
+
+#icono{
+  
+  margin-top: 9%;
+}
