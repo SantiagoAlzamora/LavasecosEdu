@@ -86,4 +86,8 @@ public class PedidoServicio {
     public List<Pedido> listarPedidos(){
         return pr.findAll();
     }
+    
+    public List<Pedido> buscarPorIdCliente(String id){
+        return pr.buscarPorIdCliente(id);
+    }
 }

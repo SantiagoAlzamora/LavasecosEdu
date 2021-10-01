@@ -25,4 +25,7 @@ public interface PedidoRepositorio extends JpaRepository<Pedido, String>{
     @Query("SELECT p FROM Pedido p WHERE p.prenda.cliente.documento = :documento")
     public List<Pedido> buscarPorDocumentoCliente(@Param("documento") Long documento);
     
+    @Query("SELECT p FROM Pedido p WHERE p.prenda.cliente.id = :idCliente")
+    public List<Pedido> buscarPorIdCliente(@Param("idCliente") String idCliente);
+    
 }

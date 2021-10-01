@@ -84,6 +84,7 @@ public class PedidoController {
             model.addAttribute("error", e.getMessage());
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
+        model.addAttribute("pedidos", ps.buscarPorIdCliente(idCliente));
         model.addAttribute("idCliente", idCliente);
         model.addAttribute("accion", accion);
         return "pedido";

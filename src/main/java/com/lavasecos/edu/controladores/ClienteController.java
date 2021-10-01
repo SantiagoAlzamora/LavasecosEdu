@@ -39,7 +39,7 @@ public class ClienteController {
         Cliente c = null;
         try {
             if (accion.equals("crear")) {
-                c= cs.cliente(cliente);
+                c = cs.cliente(cliente);
 
             } else {
                 c = cs.modificar(cliente);
@@ -48,18 +48,29 @@ public class ClienteController {
             e.printStackTrace();
             model.addAttribute("error", e.getMessage());
             model.addAttribute("cliente", cliente);
-            model.addAttribute("accion",accion != null ? accion : "crear");
+            model.addAttribute("accion", accion != null ? accion : "crear");
             redirectAttributes.addFlashAttribute("error", e.getMessage());
             return "crear-cliente";
         }
-        
-        return "redirect:/pedido/form?accion="+accion+"&idCliente="+c.getId();
+
+        return "redirect:/pedido/form?accion=" + accion + "&idCliente=" + c.getId();
     }
 
     @GetMapping("/list")
-    public String listarClientes(Model model, RedirectAttributes redirectAttributes) {
+    public String listarClientes(Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) String q) {
         try {
-            model.addAttribute("clientes", cs.listarClientes());
+            if (q != null) {
+                Cliente c = cs.buscarPorDni(Long.valueOf(q));
+                if (c == null) {
+                    model.addAttribute("error", "El cliente no existe");
+                } else {
+                    model.addAttribute("clientes", c);
+                }
+
+            } else {
+                model.addAttribute("clientes", cs.listarClientes());
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e.getMessage());
@@ -76,7 +87,7 @@ public class ClienteController {
                 Cliente cl = cs.buscarPorId(id);
                 if (cl != null) {
                     model.addAttribute("cliente", cl);
-                    model.addAttribute("accion",accion);
+                    model.addAttribute("accion", accion);
                 } else {
                     return "redirect:/cliente";
                 }
