@@ -67,8 +67,6 @@ public class ClienteController {
                     model.addAttribute("clientes", c);
                 }
 
-            } else {
-                model.addAttribute("clientes", cs.listarClientes());
             }
 
         } catch (Exception e) {
