@@ -102,5 +102,27 @@ public class ClienteController {
 
         return "crear-cliente";
     }
+    
+    @GetMapping("/form2")
+    public String editarCliente(Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) String id, @RequestParam(required = true) String accion) {
+        try {
+            if (id != null) {
+                Cliente cl = cs.buscarPorId(id);
+                if (cl != null) {
+                    model.addAttribute("cliente", cl);
+                    model.addAttribute("accion", accion);
+                } else {
+                    return "redirect:/cliente/form2";
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("error", e.getMessage());
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+        }
+        model.addAttribute("accion", accion);
+
+        return "editar-cliente";
+    }
 
 }
