@@ -71,3 +71,10 @@ body nav div img{
 #cliente-button:checked {
     border: none;
 }
+
+#boton_b{
+    background:  rgba(123, 120, 120, 0.4);
+}
+#boton_b:hover {
+    background: #2DC3BB;
+}
