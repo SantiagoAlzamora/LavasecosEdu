@@ -18,14 +18,15 @@
 
         <main>
 
+
             <form class="barra-busqueda" th:action="@{/cliente/list}" method="GET">
-                <button class="btn btn-outline-success btn-buscar" type="submit">Buscar</button>
+                <button class="btn btn-outline-success btn-buscar" id="boton_b" type="submit">Buscar</button>
                 <input class="form-control me-2 input-buscar" type="search" placeholder="" name="q">
             </form>
             <div class="tabla-de-botones">
                 <button th:if="${error}" th:text="${error}" id="cliente-button" type="button" class="btn" style="width: 50%"></button>
                 <li th:each="c:${clientes}" style="list-style: none">          
-                    <button th:unless="${error}" id="cliente-button" type="button" class="btn" style="width: 100%">Cliente <br> <p th:text="${c.documento}"></p></button>
+                    <a th:href="@{/pedido/mostrar?idCliente=}+${c.id}"><button th:unless="${error}" id="cliente-button" type="button" class="btn" style="width: 100%">Cliente <br> <p th:text="${c.documento}"></p></button></a>
                 </li>
             </div>
 

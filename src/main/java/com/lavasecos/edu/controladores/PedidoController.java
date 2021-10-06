@@ -6,6 +6,7 @@
 package com.lavasecos.edu.controladores;
 
 import com.lavasecos.edu.entidades.Pedido;
+import com.lavasecos.edu.servicios.ClienteServicio;
 import com.lavasecos.edu.servicios.PedidoServicio;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class PedidoController {
 
     @Autowired
     private PedidoServicio ps;
+    
+    @Autowired 
+    private ClienteServicio cs;
 
     @GetMapping("")
     public String index() {
@@ -53,16 +57,17 @@ public class PedidoController {
     }
 
     @GetMapping("/mostrar")
-    public String mostrarPedido(Model model, @RequestParam Pedido pedido, RedirectAttributes redirectAttributes) {
+    public String mostrarPedido(Model model, RedirectAttributes redirectAttributes, @RequestParam(required=true) String idCliente) {
         try {
-            model.addAttribute("pedido", ps.buscarPorId(pedido.getId()));
+            model.addAttribute("pedidos", ps.buscarPorIdCliente(idCliente));
+            model.addAttribute("cliente", cs.buscarPorId(idCliente));
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e.getMessage());
             redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
         
-        return "";
+        return "descripcion";
     }
 
     @GetMapping("/form")

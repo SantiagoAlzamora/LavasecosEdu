@@ -35,14 +35,20 @@ public class ClienteController {
     }
 
     @PostMapping("/registrar")
-    public String registrarCliente(Model model, RedirectAttributes redirectAttributes, @ModelAttribute Cliente cliente, @RequestParam("accion") String accion) {
+    public String registrarCliente(Model model, RedirectAttributes redirectAttributes, @ModelAttribute Cliente cliente, @RequestParam String accion,@RequestParam(required = false) String pedido ) {
         Cliente c = null;
         try {
             if (accion.equals("crear")) {
                 c = cs.cliente(cliente);
-
+                return "redirect:/pedido/form?accion=" + accion + "&idCliente=" + c.getId();
             } else {
                 c = cs.modificar(cliente);
+                System.out.println(pedido);
+                if (pedido !=null && !pedido.isEmpty()) {
+                    return "redirect:/pedido/form?accion=" + accion + "&idCliente=" + c.getId();
+                }
+                redirectAttributes.addFlashAttribute("success", "Cliente modificado con exito");
+                return "redirect:/cliente/form2?accion=" + accion ;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,7 +59,7 @@ public class ClienteController {
             return "crear-cliente";
         }
 
-        return "redirect:/pedido/form?accion=" + accion + "&idCliente=" + c.getId();
+        
     }
 
     @GetMapping("/list")
@@ -67,8 +73,6 @@ public class ClienteController {
                     model.addAttribute("clientes", c);
                 }
 
-            } else {
-                model.addAttribute("clientes", cs.listarClientes());
             }
 
         } catch (Exception e) {
@@ -103,6 +107,31 @@ public class ClienteController {
         model.addAttribute("accion", accion);
 
         return "crear-cliente";
+    }
+    
+    @GetMapping("/form2")
+    public String editarCliente(Model model, RedirectAttributes redirectAttributes, @RequestParam(required = false) String id, @RequestParam(required = true) String accion, @RequestParam(required = false) Long q) {
+        try {
+            if (q != null) {
+                Cliente cl = cs.buscarPorDni(q);
+                if (cl != null) {
+                    model.addAttribute("cliente", cl);
+                    model.addAttribute("accion", accion);
+                } else {
+                    model.addAttribute("error", "No se encontro un Cliente");
+                    model.addAttribute("cliente", new Cliente());
+                }
+            }else{
+                model.addAttribute("cliente", new Cliente());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("error", e.getMessage());
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+        }
+        model.addAttribute("accion", accion);
+
+        return "editar-cliente";
     }
 
 }

@@ -14,11 +14,23 @@
     <body>
 
         <header>
-            <nav th:replace="/fragments/nav-bar :: nav-bar"></nav>
-        
+            <nav class="container-nav">
+                <div class="container-fluid">
+                    <a th:href="@{/}">
+                        <img src="/img/Lavasecos.png" alt="Lavasecos" class="d-inline-block align-text-top"
+                             id="logo">
+                    </a>
+                </div>
+            </nav>
         </header>
+        <center><div th:if="${success != null}" class="alert alert-success" role="alert" th:text="${success}"></div>
+            <div th:if="${error != null}" class="alert alert-danger" role="alert" th:text="${error}"></div>
 
+        </center>
+       
         <div class="container-all">
+
+            
 
             <div class="container-img">
                 <div id="container">
@@ -29,20 +41,22 @@
 
             <div class="container-form">
 
-                <form class="container-search-button">
+                <form class="container-search-button" th:action="@{/cliente/form2}" method="GET">
                     <div class="col">
-                        
+                        <input hidden th:value="${accion}" name="accion">
+                        <input name="q" type="text" class="container-search" placeholder=" Buscar...">
                     </div>
                     <div class="col-4">
-                        
+                        <button type="submit" id="button">Buscar</button>
                     </div>
                 </form>
 
-                <h2 id="tittle2">Crear cliente</h2>
+                <h2 id="tittle2">Editar cliente</h2>
 
                 <form th:action="@{/cliente/registrar}" method="POST" th:object="${cliente}" >
-                    <input hidden th:value="${accion}" name="accion">
-                    <input hidden th:field="*{id}">
+                    <input hidden th:value="${accion}" name="accion" type="text">
+                    <input hidden th:field="*{id}" type="text">
+                    <input hidden id="pedido" name="pedido" type="text">
                     <div class="container-label-input">
                         <label for="nombre" class="container-label"></label>
                         <input type="text" class="container-input" th:field="*{nombre}" placeholder=" Nombre:">
@@ -72,7 +86,10 @@
                         <input type="text" class="container-input" th:field="*{telefono}" placeholder=" Celular:">
                     </div>
                     <div class="container-button">
-                        <button type="submit" class="button">Guardar</button>
+                        <button id="submit" type="submit" class="button mb-2">Guardar</button>
+                    </div>
+                    <div class="container-button">
+                        <button onclick="redirigirAPedido()" type="button" class="button">Guardar y Continuar</button>
                     </div>
 
                 </form>
@@ -80,7 +97,12 @@
 
         </div>
 
-
+        <script>
+            redirigirAPedido = () => {
+                document.getElementById("pedido").value = "pedido";
+                document.getElementById("submit").click();
+            }
+        </script>
     </body>
 
 </html>
