@@ -14,14 +14,8 @@
     <body>
 
         <header>
-            <nav class="container-nav">
-                <div class="container-fluid">
-                    <a th:href="@{/}">
-                        <img src="/img/Lavasecos.png" alt="Lavasecos" class="d-inline-block align-text-top"
-                             id="logo">
-                    </a>
-                </div>
-            </nav>
+            <nav th:replace="/fragments/nav-bar :: nav-bar"></nav>
+        
         </header>
 
         <div class="container-all">

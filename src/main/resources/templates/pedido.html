@@ -14,26 +14,9 @@
         <title>Pedido</title>
     </head>
     <body>
-        <nav class="navbar navbar-light" id="navegador">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="/img/Lavasecos.png" alt=""  width="8%" height="10%">
-                </a>
-
-                <div class="position-absolute top-2 start-50 translate-middle-x">
-                    <h1> PEDIDO </h1>  
-                </div>
-
-                <div class="position-relative"></div>
-                <div class="position-absolute top-1 end-0">
-                    <a class="navbar-brand" href="#">
-                        <img src="/img/CASITA_preview_rev_1.png" alt=""  width="30%" >
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </nav>
+        <header>
+            <nav th:replace="/fragments/nav-bar :: nav-bar"></nav>
+        </header>
     <br>
     <br>
 

@@ -11,65 +11,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="icono.min.css">
     <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
-    <link rel="stylesheet" href="/css/ctedescpedido.css">
+    <link rel="stylesheet" href="/css/descripcion.css">
 
     <title>CLIENTE</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-light" id="navegador">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="/img/Lavasecos.png" alt="" width="8%" height="10%">
-            </a>
-
-            <div class="position-absolute top-2 start-50 translate-middle-x">
-                <h1> CLIENTE </h1>
-            </div>
-
-            <div class="position-relative"></div>
-            <div class="position-absolute top-1 end-0">
-                <a class="navbar-brand" href="#">
-                    <img src="/img/CASITA_preview_rev_1.png" alt="" width="30%">
-                </a>
-            </div>
-        </div>
-
-        </div>
-    </nav>
+    <header>
+        <nav th:replace="/fragments/nav-bar :: nav-bar"></nav>
+    
+    </header>
     <br>
     <br>
     <ul>
        <!-- <li th:each="pepe: ${cliente}" th:tex="${pepe.tipo}" +' '+ th:tex="${pepe.descripcion}"+' '+ th:tex="${pepe.precio}" ></li> -->
     </ul>
-
-    <table class="table table-hover">
-        
-        <div class="container">
+    <div class="container-fluid">
+        <table class="table table-striped">
             <div class="row">
-              <div>
-                <thead>
-                    <tr>
-                        <th>tipo</th>
-                        <th>descripcion</th>
-                        <th>precio</th>
-                    </tr>
-                </thead>
-        <tbody>
-
-            <tr th:each="p, iterator: ${cliente} ">
-                <td th:text="${iterator.index+1}"> </td> 
-                <td th:text="${p.prenda.tipo}"></td>
-                <td th:text="${p.prenda.detalle}"></td>
-                <td th:text="${p.precio}"></td>
-
-            </tr>
-        </tbody>
-        <P th:if="${personas.isEmpty}">NO HAY PEDIDO QUE MOSTRAR </P>
-    </table>
-
-
-
+                <div>
+                    <thead>
+                        <tr>
+                            <th>tipo</th>
+                            <th>descripcion</th>
+                            <th>precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="p, iterator: ${cliente} ">
+                            <td th:text="${iterator.index+1}"> </td>
+                            <td th:text="${p.prenda.tipo}"></td>
+                            <td th:text="${p.prenda.detalle}"></td>
+                            <td th:text="${p.precio}"></td>
+    
+                        </tr>
+                    </tbody>
+                    <P th:if="${personas.isEmpty}">NO HAY PEDIDO QUE MOSTRAR </P>
+        </table>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
