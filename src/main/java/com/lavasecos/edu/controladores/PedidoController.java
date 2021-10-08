@@ -8,7 +8,6 @@ package com.lavasecos.edu.controladores;
 import com.lavasecos.edu.entidades.Pedido;
 import com.lavasecos.edu.servicios.ClienteServicio;
 import com.lavasecos.edu.servicios.PedidoServicio;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -101,7 +100,7 @@ public class PedidoController {
             if (accion.equals("crear")) {
                 ps.crearPedido(pedido,idCliente);
             }else{
-                ps.modificar(pedido.getId(),pedido.getPrecio(), pedido.getDescuento(), pedido.getPrenda());
+                ps.modificar(pedido,idCliente);
             }
         } catch (Exception e) {
             e.printStackTrace();

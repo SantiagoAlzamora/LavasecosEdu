@@ -4,11 +4,8 @@ package com.lavasecos.edu.servicios;
 
 import com.lavasecos.edu.entidades.Cliente;
 import com.lavasecos.edu.entidades.Prenda;
-import com.lavasecos.edu.enums.Color;
-import com.lavasecos.edu.enums.Material;
 import com.lavasecos.edu.errores.ErrorServicio;
 import com.lavasecos.edu.repositorios.PrendaRepositorio;
-import java.util.Date;
 import java.util.List;
 
 
@@ -54,9 +51,13 @@ public class PrendaServicio {
         }
     }
     
-    public void modificar2(Prenda p) throws ErrorServicio{
-        validar2(p.getTipo(),p.getCliente(),p.getDetalle());
-        pr.save(p);
+    public void modificar2(Prenda p,String idCliente) throws ErrorServicio{
+        Cliente c = cs.buscarPorId(idCliente);
+        Prenda prendabd = pr.buscarPorId(p.getId());
+        validar2(p.getTipo(),c,p.getDetalle());
+        prendabd.setTipo(p.getTipo());
+        prendabd.setDetalle(p.getDetalle());
+        pr.save(prendabd);
     }
     public List<Prenda> buscarPorDocumento(Long documento){
         return pr.buscarPorDocumento(documento);

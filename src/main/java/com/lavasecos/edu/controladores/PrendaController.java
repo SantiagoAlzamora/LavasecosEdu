@@ -87,10 +87,7 @@ public class PrendaController {
             if (accion.equals("crear")) {
                 ps.crearPrenda(prenda,idCliente);
             }else{
-//                ps.modificar(prenda.getId(),prenda.getEntrada(),prenda.getSalida(),prenda.getTipo(),
-//                        prenda.getMancha(),prenda.getColor(),prenda.getMaterial(),prenda.getCliente(),
-//                        prenda.getObservacion());
-                  ps.modificar2(prenda);
+                  ps.modificar2(prenda,idCliente);
             }
         } catch (Exception e) {
             e.printStackTrace();

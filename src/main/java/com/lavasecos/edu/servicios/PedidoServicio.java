@@ -54,17 +54,12 @@ public class PedidoServicio {
             throw new ErrorServicio("No se encontró el pedido");
         }
     }
-    public void modificar(String id,Double precio,Double descuento,Prenda prenda) throws ErrorServicio{
-        validar(precio,descuento,prenda);
-        Pedido p = pr.buscarPorId(id);
-        if(p != null){
-            p.setPrecio(precio);
-            p.setDescuento(descuento);
-            p.setPrenda(prenda);
-            pr.save(p);
-        }else {
-            throw new ErrorServicio("No se encontró el pedido solicitado");
-        }
+    public void modificar(Pedido pedido, String idCliente) throws ErrorServicio{
+        validar(pedido.getPrecio(),pedido.getDescuento(),pedido.getPrenda());
+        Pedido pbd = pr.buscarPorId(pedido.getId());
+        prendaServicio.modificar2(pedido.getPrenda(), idCliente);
+        pbd.setPrecio(pedido.getPrecio());
+        pr.save(pbd);
     }
     public Double precioDelPedido(Pedido pedido){
         Cliente c = pedido.getPrenda().getCliente();

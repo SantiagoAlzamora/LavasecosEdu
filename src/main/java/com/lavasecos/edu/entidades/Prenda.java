@@ -5,12 +5,8 @@
  */
 package com.lavasecos.edu.entidades;
 
-import com.lavasecos.edu.enums.Color;
-import com.lavasecos.edu.enums.Material;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -36,16 +32,9 @@ public class Prenda {
     
     private String tipo;
     private String detalle;
-//    private Boolean mancha;
-//    @Enumerated(EnumType.STRING)
-//    private Color color;
-//    @Enumerated(EnumType.STRING)
-//    private Material material;
     
     @ManyToOne
     private Cliente cliente;
-//    @ManyToOne
-//    private Observacion observacion;
 
     public String getId() {
         return id;
@@ -86,31 +75,6 @@ public class Prenda {
     public void setDetalle(String detalle) {
         this.detalle = detalle;
     }
-    
-//
-//    public Boolean getMancha() {
-//        return mancha;
-//    }
-//
-//    public void setMancha(Boolean mancha) {
-//        this.mancha = mancha;
-//    }
-//
-//    public Color getColor() {
-//        return color;
-//    }
-//
-//    public void setColor(Color color) {
-//        this.color = color;
-//    }
-//
-//    public Material getMaterial() {
-//        return material;
-//    }
-//
-//    public void setMaterial(Material material) {
-//        this.material = material;
-//    }
 
     public Cliente getCliente() {
         return cliente;
@@ -119,14 +83,5 @@ public class Prenda {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
-//    public Observacion getObservacion() {
-//        return observacion;
-//    }
-//
-//    public void setObservacion(Observacion observacion) {
-//        this.observacion = observacion;
-//    }
-//    
     
 }

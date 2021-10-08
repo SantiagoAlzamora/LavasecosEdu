@@ -32,7 +32,9 @@
                 <div class="col">
 
                     <div class="input-group">
-
+                        
+                        <input hidden th:field="*{id}">
+                        <input th:if="*{prenda} != null" hidden th:field="*{prenda.id}">
                         <input hidden th:value="${idCliente}" name="idCliente">
                         <input hidden th:value="${accion}" name="accion">
                         <label for="exampleDataList" class="form-label"> </label>
@@ -74,7 +76,6 @@
 
     <li th:each="p:${pedidos}" style="list-style: none; margin-top: 1rem">
         <div class="input-group container">
-
             <label for="exampleDataList" class="form-label"> </label>
             <input readonly type="text" class="form-control" list="datalistOptions" id="exampleDataList"
                 th:placeholder="${p.prenda.tipo}">
@@ -91,6 +92,12 @@
                     <span class="input-group-text">$</span>
                     <input readonly type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
                         th:placeholder="${p.precio}">
+                </div>
+            </div>
+            <div class="col-1">
+
+                <div class="input-group">
+                    <a th:href="@{/pedido/form?accion=modificar(idCliente=${idCliente},idPedido=${p.id})}"><button>Modificar</button></a>
                 </div>
             </div>
         </div>
