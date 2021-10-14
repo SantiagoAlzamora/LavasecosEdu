@@ -24,6 +24,10 @@ nav div a {
     height: 4rem;
 }
 
+.menuDesp::-webkit-scrollbar{
+    display:none;
+}
+
 #menu-dropdown {
     width: 50rem;
     border: none;

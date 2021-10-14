@@ -7,6 +7,10 @@ body{
   line-height: 1.3em;
 }
 
+body::-webkit-scrollbar{
+    display:none;
+}
+
 #navegador{
   background: #cad0cf83;
 }
@@ -57,5 +61,12 @@ body nav div {
 #icono-i{
   color: rgb(44, 34, 25);
 
+}
+
+.modificar{
+    border: none;
+    border-radius: 0.5rem;
+    margin-top: 5%;
+    margin-left: 1rem;
 }
 

@@ -83,5 +83,12 @@ public class Prenda {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    @Override
+    public String toString() {
+        return "Prenda: "+" tipo=" + tipo + ", detalle=" + detalle;
+    }
+    
+    
     
 }

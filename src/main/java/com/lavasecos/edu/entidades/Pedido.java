@@ -60,6 +60,11 @@ public class Pedido {
     public void setPrenda(Prenda prenda) {
         this.prenda = prenda;
     }
+
+    @Override
+    public String toString() {
+        return "\n Pedido: "+" precio=" + precio + ", descuento=" + descuento + ", prenda=" + prenda;
+    }
     
     
 }

@@ -74,7 +74,7 @@
 
 
 
-    <li th:each="p:${pedidos}" style="list-style: none; margin-top: 1rem">
+    <li th:each="p:${pedidos}" style="list-style: none; margin-top: 1rem;">
         <div class="input-group container">
             <label for="exampleDataList" class="form-label"> </label>
             <input readonly type="text" class="form-control" list="datalistOptions" id="exampleDataList"
@@ -97,7 +97,7 @@
             <div class="col-1">
 
                 <div class="input-group">
-                    <a th:href="@{/pedido/form?accion=modificar(idCliente=${idCliente},idPedido=${p.id})}"><button>Modificar</button></a>
+                    <a th:href="@{/pedido/form?accion=modificar(idCliente=${idCliente},idPedido=${p.id})}" ><button class="modificar">Modificar</button></a>
                 </div>
             </div>
         </div>
